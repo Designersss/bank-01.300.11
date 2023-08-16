@@ -1,5 +1,5 @@
 import {useCreateUserMutation, useGetUsersQuery} from "./store/api/api.ts";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {IUser} from "./types/user-types.ts";
 import {useActions} from "./hooks/useActions.ts";
 import {useSelector} from "react-redux";
@@ -21,6 +21,11 @@ function App() {
     const [createUser] = useCreateUserMutation()
     const {user} = useActions()
     console.log(userNow.user)
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const candidate = data?.find((user) => user.email === token)
+        user(candidate)
+    }, [isLoading])
     const registration = async () => {
         if (initialUser.email === '' || initialUser.password === ''){
             alert('Заполните пустые поля')
@@ -32,17 +37,21 @@ function App() {
                 } else {
                     await createUser(initialUser)
                     user(initialUser)
+                    localStorage.setItem('token', initialUser.email)
                 }
             }
         }
 
     }
-
+    if (isLoading){
+        return <div>Loading.....</div>
+    }
     const login = async () => {
         if (data){
             const candidate = data.find((user) => user.email === initialUser.email)
             if (candidate?.password === initialUser.password){
                 user(candidate)
+                localStorage.setItem('token', candidate.email)
             } else {
                 alert('Неправильный пароль или пользователь не найден')
             }
@@ -53,13 +62,7 @@ function App() {
     return (
         <div>
             {
-                isLoading
-                    ? <>Loading...</>
-                    : data
-                        ? data.map((item: IUser) =>
-                            <div key={item.id}>{item.name}</div>
-                        )
-                        : <>Not Found...</>
+                userNow.user ? userNow.user.email : 'none'
             }
             <div>
                 <input className='border-2 px-4 py-1 outline-0 rounded-2xl border-amber-200' value={initialUser.email}

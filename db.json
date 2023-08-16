@@ -1,0 +1,12 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "Denis",
+      "email": "cheredkovden3",
+      "password": "123",
+      "cash": 0,
+      "transfer": []
+    }
+  ]
+}

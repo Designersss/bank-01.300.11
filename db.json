@@ -7,6 +7,46 @@
       "password": "123",
       "cash": 0,
       "transfer": []
+    },
+    {
+      "id": 2,
+      "email": "123",
+      "password": "123",
+      "name": "new user",
+      "cash": 0,
+      "transfer": []
+    },
+    {
+      "id": 3,
+      "email": "312",
+      "password": "312",
+      "name": "new user",
+      "cash": 0,
+      "transfer": []
+    },
+    {
+      "id": 4,
+      "email": "3124",
+      "password": "312",
+      "name": "new user",
+      "cash": 0,
+      "transfer": []
+    },
+    {
+      "id": 5,
+      "email": "31255",
+      "password": "333",
+      "name": "new user",
+      "cash": 0,
+      "transfer": []
+    },
+    {
+      "id": 6,
+      "email": "312555",
+      "password": "333",
+      "name": "new user",
+      "cash": 0,
+      "transfer": []
     }
   ]
 }

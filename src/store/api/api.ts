@@ -4,7 +4,7 @@ import {IUser} from "../../types/user-types.ts";
 
 
 export const api = createApi({
-    reducerPath: 'user',
+    reducerPath: 'users',
     tagTypes: ['Users'],
     baseQuery: fetchBaseQuery({
         baseUrl: baseUrl
